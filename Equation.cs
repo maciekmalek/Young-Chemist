@@ -8,8 +8,8 @@ namespace Young_Chemist
 {
     public class Equation
     {
-        public string Description { get; set; }
-        public string Side1 { get; set; }
-        public string Side2 { get; set; }
+        public string First{ get; set; }
+        public string Second { get; set; }
+        public string Final { get; set; }
     }
 }

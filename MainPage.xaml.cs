@@ -26,16 +26,23 @@ namespace Young_Chemist
     {
         private int score = 0;
         private bool answer = false;
-        private int comboleft = 0;
+        private int comboleft1 = 0;
+        private int comboleft2 = 0;
         private int comboright = 0;
+
+        private Core first = null;
+        private Core second = null;
+        private Core final = null;
+
         private List<Equation> levels = new List<Equation>();
-        private int levelPasses = 0;
+        
         private int currentLevel = 0;
 
         public MainPage()
         {
             this.InitializeComponent();
             LoadJson();
+            SetUpLevel();
             //levels = JsonConvert.DeserializeObject<List<Equation>>(Data.Data);
 
         }
@@ -48,42 +55,106 @@ namespace Young_Chemist
                 levels = JsonConvert.DeserializeObject<List<Equation>>(json);
             }
         }
-       
+        public void SetUpLevel()
+        {
+            var level = levels[currentLevel];
+            Core firstCurrent = null;
+            string firstCurrentError = null;
+            Core secondCurrent = null;
+            string secondCurrentError = null;
+            Core finalCurrent = null;
+            string finalCurrentError = null;
+
+            if (!Parser.ParseFormula(level.First, out firstCurrent, out firstCurrentError))
+            {
+                throw new Exception(firstCurrentError);
+
+            }
+            if (!Parser.ParseFormula(level.Second, out secondCurrent, out secondCurrentError))
+            {
+                throw new Exception(secondCurrentError);
+
+            }
+            if (!Parser.ParseFormula(level.Final, out finalCurrent, out finalCurrentError))
+            {
+                throw new Exception(finalCurrentError);
+
+            }
+
+            first = firstCurrent;
+            second = secondCurrent;
+            final = finalCurrent;
+            
+
+
+
+            comboLeft1.SelectedItem = "1";
+            comboLeft2.SelectedItem = "1";
+            comboRight.SelectedItem = "1";
+
+
+
+            Lewy1.Text = level.First;
+            Lewy2.Text = level.Second;
+            Prawy.Text = level.Final;
+            //TODO
+        }
+
+        public void nextLevel()
+        {
+            if(currentLevel < levels.Count - 1)
+            {
+                currentLevel++;
+                SetUpLevel();
+            }
+        }
+
+        public bool isMatching()
+        {
+            bool match = true;
+            foreach(var atom1 in first.GetAllSymbols())
+            foreach(var atom2 in second.GetAllSymbols())
+                {
+                    int firstCount = first.GetTotalAtomCount(atom1);
+                    int secondCount = second.GetTotalAtomCount(atom2);
+                    int finalCount1 = final.GetTotalAtomCount(atom1);
+                    int finalCount2 = final.GetTotalAtomCount(atom2);
+                    if(firstCount != finalCount1 || secondCount != finalCount2)
+                    {
+                        match = false;
+                        break;
+                    }
+                }
+            return match;
+        }
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
         {
 
+           
         }
 
         private void TextBlock_SelectionChanged_2(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             
-            comboleft = int.Parse(comboLeft.SelectedItem.ToString());
+            comboleft1 = int.Parse(comboLeft1.SelectedItem.ToString());
+            comboleft2 = int.Parse(comboLeft2.SelectedItem.ToString());
             comboright = int.Parse(comboRight.SelectedItem.ToString());
-            if (comboleft == comboright)
-            {
-                answer = true;
-            }
-            else
-            {
-                answer = false;
-            }
-            if (answer == true)
+            
+
+            
+            if (isMatching())
             {
                 score++;
                 scoreTextBlock.Text = "Player score: " + score.ToString();
             }
-            else
-            {
-                score = 0;
-                scoreTextBlock.Text = "Player score: " + score.ToString();
 
-            }
-
+            nextLevel();
+            
 
         }
 

@@ -11,7 +11,7 @@
     <Grid>
         <TextBlock x:Name="scoreTextBlock" HorizontalAlignment="Center" Margin="0,39,0,0" Text="Player score: 0" TextWrapping="Wrap" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged_2"/>
         <Button Content="Submit" Margin="0,416,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Click="Button_Click"/>
-        <ComboBox SelectedItem="1" x:Name="comboLeft" Margin="224,122,0,0" Width="124" SelectionChanged="ComboBox_SelectionChanged">
+        <ComboBox SelectedItem="1" x:Name="comboLeft1" Margin="100,122,0,0" Width="50" SelectionChanged="ComboBox_SelectionChanged">
             <x:String>1</x:String>
             <x:String>2</x:String>
             <x:String>3</x:String>
@@ -22,7 +22,7 @@
             <x:String>8</x:String>
             <x:String>9</x:String>
         </ComboBox>
-        <ComboBox SelectedItem="1" x:Name="comboRight" Margin="755,122,0,0" Width="116" SelectionChanged="ComboBox_SelectionChanged">
+        <ComboBox SelectedItem="1" x:Name="comboLeft2" Margin="300,122,0,0" Width="50" SelectionChanged="ComboBox_SelectionChanged">
             <x:String>1</x:String>
             <x:String>2</x:String>
             <x:String>3</x:String>
@@ -33,9 +33,23 @@
             <x:String>8</x:String>
             <x:String>9</x:String>
         </ComboBox>
-        <TextBlock HorizontalAlignment="Left" Margin="353,131,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged"/>
-        <TextBlock HorizontalAlignment="Left" Margin="876,131,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged_1"/>
-        
+        <ComboBox SelectedItem="1" x:Name="comboRight" Margin="525,122,0,0" Width="50" SelectionChanged="ComboBox_SelectionChanged">
+            <x:String>1</x:String>
+            <x:String>2</x:String>
+            <x:String>3</x:String>
+            <x:String>4</x:String>
+            <x:String>5</x:String>
+            <x:String>6</x:String>
+            <x:String>7</x:String>
+            <x:String>8</x:String>
+            <x:String>9</x:String>
+        </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Margin="175,122,0,0" x:Name="Lewy1"  TextWrapping="Wrap" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="375,122,0,0" x:Name="Lewy2"  TextWrapping="Wrap" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="600,122,0,0" x:Name="Prawy"  TextWrapping="Wrap" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged_1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="250,122,0,0" x:Name="Plus" Text="+" TextWrapping="Wrap" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged_1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="450,122,0,0" x:Name="Equal" Text="="  TextWrapping="Wrap" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged_1"/>
+
 
     </Grid>
 </Page>

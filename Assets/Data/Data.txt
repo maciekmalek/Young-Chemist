@@ -1,27 +1,22 @@
 ﻿[
-  {
-    "Description":"Water decomposes to form oxygen and hydrogen.",
-    "Side1":"H2O",
-    "Side2":"H2 O2"
-  },
+  
   {
     "Description": "Hydrochloric acid is formed by a reaction between hydrogen gas and chlorine gas.",
-    "Side1":"H2 Cl2",
-    "Side2": "HCl"
+    "First":"H2",
+	"Second":"Cl2",
+    "Final": "HCl"
   },
   {
     "Description": "Chlorine and oxygen react to form dichlorine monoxide.",
-    Side1: "Cl2 O2",
-    Side2: "Cl2O"
+    "First": "Cl2",
+	"Second": "O2",
+    "Final": "Cl2O"
   },
+ 
   {
-    "Description": "Nitrogen and hydrogen gasses combine to form ammonia.",
-    "Side1": "N2 H2",
-    "Side2": "NH3"
-  },
-  {
-    Description: "Hydrogen peroxide breaks down chemically to form water and oxygen.",
-    "Side1": "H2O2",
-    "Side2": "H2O O2"
+    Description: "Water",
+    "First": "H2",
+	"Second": "O2",
+    "Final": "H2O"
   }
 ]
