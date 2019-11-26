@@ -145,8 +145,27 @@ namespace Young_Chemist
             comboleft2 = int.Parse(comboLeft2.SelectedItem.ToString());
             comboright = int.Parse(comboRight.SelectedItem.ToString());
             
-
             
+            foreach(var f in first.Molecules)
+            {
+                f.Count = comboleft1;
+                //resetCounts();
+             
+            }
+            foreach (var f in second.Molecules)
+            {
+                f.Count = comboleft2;
+                //resetCounts();
+            }
+            foreach (var f in final.Molecules)
+            {
+                f.Count = comboright;
+                //resetCounts();
+            }
+
+
+
+
             if (isMatching())
             {
                 score++;
