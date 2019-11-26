@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,16 +22,33 @@ namespace Young_Chemist
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class MainPage : Page
+
     {
-        
-        public MainPage()
-        {
-            this.InitializeComponent();
-        }
         private int score = 0;
         private bool answer = false;
         private int comboleft = 0;
         private int comboright = 0;
+        private List<Equation> levels = new List<Equation>();
+        private int levelPasses = 0;
+        private int currentLevel = 0;
+
+        public MainPage()
+        {
+            this.InitializeComponent();
+            LoadJson();
+            //levels = JsonConvert.DeserializeObject<List<Equation>>(Data.Data);
+
+        }
+        public void LoadJson()
+        {
+            using (StreamReader r = new StreamReader(@"Assets/Data/Data.txt"))
+            {
+                
+                string json = r.ReadToEnd();
+                levels = JsonConvert.DeserializeObject<List<Equation>>(json);
+            }
+        }
+       
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
         {
 
@@ -43,6 +61,7 @@ namespace Young_Chemist
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            
             comboleft = int.Parse(comboLeft.SelectedItem.ToString());
             comboright = int.Parse(comboRight.SelectedItem.ToString());
             if (comboleft == comboright)
