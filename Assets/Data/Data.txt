@@ -18,5 +18,26 @@
     "First": "H2",
 	"Second": "O2",
     "Final": "H2O"
-  }
+  },
+  {
+    Description: "carbon dioxide",
+    "First": "C",
+	"Second": "O2",
+    "Final": "CO2"
+  },
+  {
+    Description: "sol",
+    "First": "Hg",
+	"Second": "O2",
+    "Final": "HgO"
+  },
+  {
+    Description: "Water",
+    "First": "Na",
+	"Second": "O2",
+    "Final": "NaO2"
+  },
+
+
+
 ]
